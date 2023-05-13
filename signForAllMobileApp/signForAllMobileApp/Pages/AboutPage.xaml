@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:vm="clr-namespace:signForAllMobileApp.ViewModel"
+             x:Class="signForAllMobileApp.Pages.AboutPage">
+    
+    <NavigationPage.TitleView>
+        <Frame HasShadow="True">
+            <StackLayout Orientation="Horizontal">
+                <StackLayout>
+                    <Label Text="About" FontAttributes="Bold" FontSize="24" TextColor="Black"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" Margin="0" Padding="0">
+                    <ImageButton Clicked="GoToLearnPage" Source="readingBook.png" HeightRequest="30" WidthRequest="30" Margin="5,0"/>
+                    <ImageButton Clicked="GoToCameraPage" Source="photoCamera.png" HeightRequest="30" WidthRequest="30" Margin="5,0"/>
+                    <ImageButton Clicked="GoToAboutPage" Source="infoButton.png" HeightRequest="30" WidthRequest="30" Margin="5,0"/>
+                </StackLayout>
+            </StackLayout>
+        </Frame>
+    </NavigationPage.TitleView>
+
+    <ContentPage.BindingContext>
+        <vm:MembersViewModel/>
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+
+        <StackLayout>
+            <Label Text="Context" FontSize="26" FontAttributes="Bold" Margin="20,0,0,0" TextColor="#FF6000"/>
+            <Frame HeightRequest="350" WidthRequest="350" 
+                                BackgroundColor="#FF6000" 
+                                HasShadow="True" Margin="15"
+                                Padding="0" CornerRadius="15"
+                                HorizontalOptions="CenterAndExpand">
+                <Label Padding="10" TextColor="White" FontSize="18" Text="1,5 billion people live with hearing loss, 430 million of those have disabling hearing loss. 72 million deaf people speak sign across the world, a number that is far too small compared to the amount of deaf people. But what is more concerning is that the vast majority of sign-speaking deaf people are in non-sign-speaking environments, rendering their primary means of meaningful conversation useless. Sign language is not easy to learn and few apps succeed at teaching this. A more suitable teaching app is clearly needed.">
+                </Label>
+            </Frame>
+            <Label Text="Our Goal" FontSize="26" FontAttributes="Bold" Margin="20,0,0,0" TextColor="#FF6000"/>
+            <Frame HeightRequest="200" WidthRequest="350" 
+                                BackgroundColor="#FF6000" 
+                                HasShadow="True" Margin="15"
+                                Padding="0" CornerRadius="15"
+                                HorizontalOptions="CenterAndExpand">
+                <Label Padding="10" TextColor="White" FontSize="18" Text="We aim to make sign language more accessible to more people in the mainstream through the use of computing techniques. The development of anything from an application to an AI framework capable of translating sign language.">
+                </Label>
+            </Frame>
+
+            <Label Text="Strategy" FontSize="26" FontAttributes="Bold" Margin="20,0,0,0" TextColor="#FF6000"/>
+            <Frame HeightRequest="700" WidthRequest="350" 
+                                BackgroundColor="#FF6000" 
+                                HasShadow="True" Margin="15"
+                                Padding="0" CornerRadius="15"
+                                HorizontalOptions="CenterAndExpand">
+                <Label Padding="10" TextColor="White" FontSize="18">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span Text="Approach: The approach for the research will be a mixed method, for quantitative the data will be collected, processed, and evaluated based on the results, while review based answers on the product will be collected as qualitative data. &#xa;"/>
+                                <Span Text="&#xa;"/>
+                                <Span Text="Background: We review existing literature to develop a broader understanding of the existing methods to translate sign language to other languages, such as the libraries used, and the machine language techniques used to develop those systems. &#xa;"/>
+                                <Span Text="&#xa;"/>
+                                <Span Text="Collection Method: Using Machine language technique as the method of data collection and processing combined with the use of an web API to handle the communication between the user and the system as well as facilitate the collection, processing and evaluation of the data."/>
+                                <Span Text="&#xa;"/>
+                                <Span Text="The API will have an UI that enables users to learn signs by viewing existing signs. The user can record a video of them practicing the signs. The videos will be sent and stored on a library-based storage(database). The ML techniques will analyze the signs made based on the recorded/live video and give a response that the sign is correct or incorrect. "/>
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+            </Frame>
+
+            <Label Text="The team" TextColor="#FF6000" FontSize="26" FontAttributes="Bold" Margin="10" />
+
+            <CarouselView ItemsSource="{Binding members}" HeightRequest="190" PeekAreaInsets="110" IndicatorView="IndicatorView" IsBounceEnabled="False">
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Margin="0">
+                            <Frame HeightRequest="150" WidthRequest="150" 
+                                HasShadow="True" Margin="5"
+                                Padding="0" CornerRadius="70"
+                                HorizontalOptions="CenterAndExpand">
+                                <Grid>
+                                    <StackLayout>
+                                        <ImageButton Source="{Binding picture}" Aspect="AspectFill" HeightRequest="150"/>
+                                    </StackLayout>
+                                    <StackLayout>
+                                        <Label x:Name="labelLink" Text="{Binding name}" TextColor="#FF6000" FontSize="15" FontAttributes="Bold" Margin="20,10" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand">
+                                            <Label.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                                            </Label.GestureRecognizers>
+                                        </Label>
+                                    </StackLayout>
+                                </Grid>
+                            </Frame>
+                        </StackLayout>
+
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+            <IndicatorView x:Name="IndicatorView"
+                       IndicatorSize="5"
+                       IndicatorsShape="Circle"
+                       IndicatorColor="Black"
+                       Scale="1.5"
+                       SelectedIndicatorColor="#FF6000"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center" Margin="0,0,0,20">
+            </IndicatorView>
+
+            <Frame Padding="0" CornerRadius="15" HeightRequest="180" Margin="0,0,0,-10">
+                <StackLayout BackgroundColor="#FF6000"  Padding="10">
+                    <StackLayout Orientation="Horizontal">
+                        <StackLayout>
+                            <Label Text="Students from Belgium" TextColor="White" FontSize="15" FontAttributes="Bold"/>
+                            <Label Text="Alharthy,Ahmed A.S.A." TextColor="White" TextDecorations="Underline">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="cntStudent"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </StackLayout>
+                        <StackLayout HorizontalOptions="EndAndExpand">
+                            <Label Text="Students from Netherland" TextColor="White" FontSize="15" FontAttributes="Bold"/>
+                            <Label Text="Ruby Steegmans" TextColor="White" TextDecorations="Underline">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="cntStudentR"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </StackLayout>
+                    </StackLayout>
+
+                    <StackLayout  Orientation="Horizontal">
+                        <StackLayout>
+                            <Label Text="Students from South Africa" TextColor="White" FontSize="15" FontAttributes="Bold"/>
+                            <Label Text="Thendo Ndhlovu" TextColor="White" TextDecorations="Underline">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="cntStudentT"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                            <Label Text="William Houy" TextColor="White" TextDecorations="Underline">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="cntStudentW"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                            <Label Text="Kagiso Kgobane" TextColor="White" TextDecorations="Underline">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="cntStudentK"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </StackLayout>
+                        <Frame CornerRadius="50" Margin="40,0,0,0">
+                            <Image Source="https://st.depositphotos.com/1146092/2514/i/600/depositphotos_25143517-stock-photo-cool-dog.jpg" HeightRequest="60" Margin="0,0,0,0"/>
+                        </Frame>
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+
+
+        </StackLayout>
+
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:vm="clr-namespace:signForAllMobileApp.ViewModel"
+             x:Class="signForAllMobileApp.Pages.LearnPage"
+             BackgroundColor="#FF6000">
+
+    <NavigationPage.TitleView>
+        <Frame HasShadow="True">
+            <StackLayout Orientation="Horizontal">
+                <StackLayout>
+                    <Label Text="Information" FontAttributes="Bold" FontSize="24" TextColor="Black"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" Margin="0" Padding="0">
+                    <ImageButton Clicked="GoToLearnPage" Source="readingBook.png" HeightRequest="30" WidthRequest="30" Margin="5,0"/>
+                    <ImageButton Clicked="GoToCameraPage" Source="photoCamera.png" HeightRequest="30" WidthRequest="30" Margin="5,0"/>
+                    <ImageButton Clicked="GoToAboutPage" Source="infoButton.png" HeightRequest="30" WidthRequest="30" Margin="5,0"/>
+                </StackLayout>
+            </StackLayout>
+        </Frame>
+    </NavigationPage.TitleView>
+
+    <ContentPage.BindingContext>
+        <vm:CardViewModel/>
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <StackLayout>
+            <Label Text="Sign Language (SL)" TextColor="White" FontSize="26" FontAttributes="Bold" Margin="10" />
+
+            <CarouselView ItemsSource="{Binding areas}" HeightRequest="300" PeekAreaInsets="100">
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <Frame HeightRequest="270" WidthRequest="250" 
+                                BackgroundColor="White" 
+                                HasShadow="True" Margin="15"
+                                Padding="0" CornerRadius="15"
+                                HorizontalOptions="CenterAndExpand">
+                                <Grid>
+                                    <StackLayout>
+                                        <Image Source="{Binding imgSource}" Aspect="AspectFill" HeightRequest="200"/>
+                                    </StackLayout>
+                                    <StackLayout>
+                                        <Label Text="{Binding name}" TextColor="Black" FontSize="18" FontAttributes="Bold" Margin="10" VerticalOptions="EndAndExpand"/>
+                                    </StackLayout>
+                                </Grid>
+
+                            </Frame>
+                        </StackLayout>
+
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+
+            <StackLayout >
+                <Label Text="External Reading on SL" TextColor="White" FontSize="24" FontAttributes="Bold" Margin="10" />
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <StackLayout Margin="5" WidthRequest="90">
+                    <ImageButton Clicked="OpenSourcebtn" CornerRadius="200" HorizontalOptions="Center" Source="https://cdn1.iconfinder.com/data/icons/sign-language/512/SIGN_LANGUAGE-R-02-512.png" HeightRequest="50" BackgroundColor="White"/>
+                    <Label HorizontalOptions="Center" Text="Before SL" HorizontalTextAlignment="Center" TextColor="White" FontSize="14" FontAttributes="Bold" Margin="0" VerticalTextAlignment="Center"/>
+                </StackLayout>
+
+                <StackLayout Margin="5" WidthRequest="90">
+                    <ImageButton Clicked="OpenSourcebtn2" CornerRadius="200" HorizontalOptions="Center" Source="https://cdn1.iconfinder.com/data/icons/sign-language/512/SIGN_LANGUAGE-R-11-512.png" HeightRequest="50" BackgroundColor="White"/>
+                    <Label HorizontalOptions="Center" VerticalOptions="Center" Text="Beginning of SL" HorizontalTextAlignment="Center" TextColor="White" FontSize="14" FontAttributes="Bold" Margin="0"/>
+                </StackLayout>
+
+                <StackLayout Margin="5" WidthRequest="90">
+                    <ImageButton Clicked="OpenSourcebtn" CornerRadius="200" HorizontalOptions="Center" Source="https://cdn0.iconfinder.com/data/icons/sign-language-2/64/HELLO-sign_language-hi-talking-therapy-512.png" HeightRequest="50" BackgroundColor="White"/>
+                    <Label HorizontalOptions="Center" VerticalOptions="Center" Text="History of SASL" HorizontalTextAlignment="Center" TextColor="White" FontSize="14" FontAttributes="Bold" Margin="0"/>
+                </StackLayout>
+
+                <StackLayout Margin="5" WidthRequest="90">
+                    <ImageButton Clicked="OpenSourcebtn4" CornerRadius="200" HorizontalOptions="Center" Source="https://static.thenounproject.com/png/2337-200.png" HeightRequest="50" BackgroundColor="White"/>
+                    <Label HorizontalOptions="Center" Text="About SL" HorizontalTextAlignment="Center" TextColor="White" FontSize="14" FontAttributes="Bold" Margin="0" VerticalTextAlignment="Center"/>
+                </StackLayout>
+            </StackLayout>
+
+            <Frame CornerRadius="15" VerticalOptions="FillAndExpand" Margin="0,20,0,-20">
+                <StackLayout Orientation="Vertical" HorizontalOptions="StartAndExpand" BackgroundColor="White" WidthRequest="400">
+
+                    <Label Text="External Videos" TextColor="Black" FontSize="24" FontAttributes="Bold" Margin="10"/>
+
+                    <StackLayout Orientation="Horizontal">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped">
+                            </TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+                        <ImageButton Clicked="ImageButton_Clicked" Source="https://static.thenounproject.com/png/2068136-200.png" Margin="10,0,0,0" HeightRequest="50" WidthRequest="50" BackgroundColor="White"/>
+                        <Label HorizontalOptions="StartAndExpand" Text="SOUTH AFRICAN SIGN LANGUAGE (SASL) ALPHABET (ABC) " TextColor="Black" FontSize="18" FontAttributes="Bold" Margin="10" VerticalTextAlignment="Center"/>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1">
+                            </TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+                        <ImageButton Clicked="ImageButton_Clicked_1"  Source="https://static.thenounproject.com/png/2068136-200.png" Margin="10,0,0,0" HeightRequest="50" WidthRequest="50" BackgroundColor="White"/>
+                        <Label HorizontalOptions="StartAndExpand" Text="Learn How to Sign The Alphabet (ABCs) in ASL" TextColor="Black" FontSize="18" FontAttributes="Bold" Margin="10" VerticalTextAlignment="Center"/>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_2">
+                            </TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+                        <ImageButton Clicked="ImageButton_Clicked_2"  Source="https://static.thenounproject.com/png/2068136-200.png" Margin="10,0,0,0" HeightRequest="50" WidthRequest="50" BackgroundColor="White"/>
+                        <Label HorizontalOptions="StartAndExpand" Text="Fingerspelling: Quiz- Twenty Names" TextColor="Black" FontSize="18" FontAttributes="Bold" Margin="10" VerticalTextAlignment="Center"/>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_3">
+                            </TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+                        <ImageButton Clicked="ImageButton_Clicked_3"  Source="https://static.thenounproject.com/png/2068136-200.png" Margin="10,0,0,0" HeightRequest="50" WidthRequest="50" BackgroundColor="White"/>
+                        <Label HorizontalOptions="StartAndExpand" Text="Reading ASL names practice | Learn finger spelling" TextColor="Black" FontSize="18" FontAttributes="Bold" Margin="10" VerticalTextAlignment="Center"/>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_4">
+                            </TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+                        <ImageButton Clicked="ImageButton_Clicked_4"  Source="https://static.thenounproject.com/png/2068136-200.png" Margin="10,0,0,0" HeightRequest="50" WidthRequest="50" BackgroundColor="White"/>
+                        <Label HorizontalOptions="StartAndExpand" Text="100 Words in South African Sign Language | The Sign Tutors" TextColor="Black" FontSize="18" FontAttributes="Bold" Margin="10" VerticalTextAlignment="Center"/>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_5">
+                            </TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+                        <ImageButton Clicked="ImageButton_Clicked_5"  Source="https://static.thenounproject.com/png/2068136-200.png" Margin="10,0,0,0" HeightRequest="50" WidthRequest="50" BackgroundColor="White"/>
+                        <Label HorizontalOptions="StartAndExpand" Text="25 ASL Signs You Need to Know | ASL Basics | American Sign Language for Beginners" TextColor="Black" FontSize="18" FontAttributes="Bold" Margin="10" VerticalTextAlignment="Center"/>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_6">
+                            </TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+                        <ImageButton Clicked="ImageButton_Clicked_6"  Source="https://static.thenounproject.com/png/2068136-200.png" Margin="10,0,0,0" HeightRequest="50" WidthRequest="50" BackgroundColor="White"/>
+                        <Label HorizontalOptions="StartAndExpand" Text="This is a video link" TextColor="Black" FontSize="18" FontAttributes="Bold" Margin="10" VerticalTextAlignment="Center"/>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_7">
+                            </TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+                        <ImageButton Clicked="ImageButton_Clicked_7"  Source="https://static.thenounproject.com/png/2068136-200.png" Margin="10,0,0,0" HeightRequest="50" WidthRequest="50" BackgroundColor="White"/>
+                        <Label HorizontalOptions="StartAndExpand" Text="150 Essential ASL Signs | Part 1 | Common and Descriptive Signs" TextColor="Black" FontSize="18" FontAttributes="Bold" Margin="10" VerticalTextAlignment="Center"/>
+                    </StackLayout>
+
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>

@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="signForAllMobileApp.MainPage">
+
+
+    <NavigationPage.TitleView>
+        <Frame HasShadow="True">
+            <StackLayout Orientation="Horizontal">
+                <StackLayout>
+                    <Label Text="Main Page" FontAttributes="Bold" FontSize="24" TextColor="Black"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" Margin="0" Padding="0">
+                    <ImageButton Clicked="GoToLearnPage" Source="readingBook.png" HeightRequest="30" WidthRequest="30" Margin="5,0"/>
+                    <ImageButton Clicked="GoToCameraPage" Source="photoCamera.png" HeightRequest="30" WidthRequest="30" Margin="5,0"/>
+                    <ImageButton Clicked="GoToAboutPage" Source="infoButton.png" HeightRequest="30" WidthRequest="30" Margin="5,0"/>
+                </StackLayout>
+            </StackLayout>
+        </Frame>
+    </NavigationPage.TitleView>
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <ImageButton Source="https://www.voicesofyouth.org/sites/voy/files/images/2021-07/ilydsl_1.jpg" CornerRadius="40" HeightRequest="80" WidthRequest="80" Margin="10,50" HorizontalOptions="Center"/>
+
+
+            <Frame CornerRadius="15" BackgroundColor="WhiteSmoke" Margin="0,0,0,90" HasShadow="True" Padding="0,10,0,80" VerticalOptions="CenterAndExpand" HeightRequest="400">
+                <StackLayout>
+                    <Label Text="Sign for All" TextColor="Black" FontSize="26" FontAttributes="Bold" Margin="10" HorizontalOptions="Center"/>
+                    <Button Text="Translate" Clicked="GoToCameraPage" Margin="40, 60" HeightRequest=" 60" TextColor="#FF6000" BackgroundColor="White" BorderColor="Black" BorderWidth="1.8" CornerRadius="40"/>
+                    <Button Text="Learn Sign Language" Clicked="GoToLearnPage" Margin="40" HeightRequest=" 60" TextColor="#FF6000" BackgroundColor="White" BorderColor="Black" BorderWidth="1.8" CornerRadius="40"/>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage>
