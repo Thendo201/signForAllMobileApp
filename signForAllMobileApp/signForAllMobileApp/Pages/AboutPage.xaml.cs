@@ -48,7 +48,7 @@ namespace signForAllMobileApp.Pages
         }
         private void cntStudentW(object sender, EventArgs e)
         {
-            CrossShare.Current.OpenBrowser("https://github.com/Fenorix");
+            CrossShare.Current.OpenBrowser("https://www.linkedin.com/in/william-houy-b15975277/");
         }
         private void cntStudentK(object sender, EventArgs e)
         {
