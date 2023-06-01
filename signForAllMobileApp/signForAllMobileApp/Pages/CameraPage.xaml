@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
@@ -22,13 +22,20 @@
 
     <ContentPage.Content>
         <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*" />
+                <RowDefinition Height="2*" />
+            </Grid.RowDefinitions>
+            
             <xct:CameraView
                 x:Name="xctCameraView"
+                Grid.Row="0"
                 CaptureMode="Photo"
                 MediaCaptured="MediaCaptured"
                 HorizontalOptions="FillAndExpand"
                 VerticalOptions="FillAndExpand" />
 
+            
             <StackLayout VerticalOptions="Center" HorizontalOptions="Center" x:Name="imgViewPanel" Spacing="0">
                 <Frame Padding="3" BackgroundColor="White" HeightRequest="200" WidthRequest="200">
                     <StackLayout Spacing="0">
@@ -38,19 +45,19 @@
                 </Frame>
             </StackLayout>
 
-            <StackLayout VerticalOptions="EndAndExpand" Spacing="2" Padding="6">
-                <Label Text="Video Mode" TextColor="White" FontSize="14" VerticalOptions="Center"/>
-                <StackLayout Orientation="Horizontal">
-                    <Switch Toggled="Switch_Toggled" x:Name="switchMode" VerticalOptions="Center"/>
-                    <Label Text="Image" TextColor="Red" FontSize="14" HorizontalOptions="EndAndExpand" VerticalOptions="Center" x:Name="captureMode"/>
-                </StackLayout>
-                <Button Text="Capture" Clicked="CaptureImage" x:Name="captureBtn"/>
-                <StackLayout Orientation="Horizontal">
-                    <Button Text="Record Video" Clicked="RecordVideo" IsEnabled="false" x:Name="btnrecordVideo" 
-                            HorizontalOptions="FillAndExpand"/>
-                    <Button Text="Stop Video" Clicked="StopVideo" IsEnabled="False" x:Name="btnstopVideo" 
-                            VerticalOptions="EndAndExpand"  HorizontalOptions="FillAndExpand"/>
-                </StackLayout>
+            <StackLayout Grid.Row="1" VerticalOptions="EndAndExpand" Spacing="2" Padding="6">
+                <Frame HeightRequest="600" 
+                       WidthRequest="350" 
+                       BackgroundColor="#FF6000" 
+                       HasShadow="True" Margin="0,0,0,30"
+                       Padding="0" CornerRadius="15"
+                       HorizontalOptions="CenterAndExpand"
+                       x:Name="transBox">
+                    <Label Padding="10" TextColor="White" FontSize="18" Text="Translation should appear here.">
+                    </Label>
+                </Frame>
+                <Button Text="Start Translate" Clicked="StartCapture" x:Name="startCaptureBtn"/>
+                <Button Text="Stop Translate" Clicked="StopCapture" x:Name="stopBtn"/>
             </StackLayout>
         </Grid>
     </ContentPage.Content>
