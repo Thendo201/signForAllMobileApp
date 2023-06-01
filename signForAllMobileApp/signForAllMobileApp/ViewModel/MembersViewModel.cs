@@ -59,8 +59,8 @@ namespace signForAllMobileApp.ViewModel
                 id = 0,
                 name = "William Houy",
                 email = "someone@gmail.com",
-                picture = "https://assets.stickpng.com/images/585e4bf3cb11b227491c339a.png",
-                link = "https://github.com/Fenorix"
+                picture = "https://media.licdn.com/dms/image/D4D03AQGfnZRDhkgs8w/profile-displayphoto-shrink_200_200/0/1684579173923?e=1691020800&v=beta&t=lwiTUZmsMDKXt1ZTwkBh92kjbvjgjhpl-1coMSgYihA",
+                link = "https://www.linkedin.com/in/william-houy-b15975277/"
             });
             members.Add(new Member
             {
