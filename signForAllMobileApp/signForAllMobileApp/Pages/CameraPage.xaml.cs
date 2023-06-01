@@ -1,9 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.CommunityToolkit.UI.Views;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -12,9 +13,13 @@ namespace signForAllMobileApp.Pages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CameraPage : ContentPage
     {
+        //Keeping track of translation
+        bool capturing = false;
+
         public CameraPage()
         {
             InitializeComponent();
+            imgViewPanel.IsVisible = false;
         }
         public void GoToLearnPage(object obj, EventArgs args)
         {
@@ -29,45 +34,30 @@ namespace signForAllMobileApp.Pages
             Navigation.PushAsync(new Pages.AboutPage());
         }
 
-        private void CaptureImage(object sender, EventArgs e)
+        //Use this method to capture an image
+        private async void StartCapture(object sender, EventArgs e)
         {
-            xctCameraView.Shutter();
-        }
-        private void RecordVideo(object sender, EventArgs e)
-        {
-            xctCameraView.Shutter();
-        }
-        private void StopVideo(object sender, EventArgs e)
-        {
-            xctCameraView.Shutter();
-        }
-
-        private void Switch_Toggled(object sender, ToggledEventArgs e)
-        {
-            if (xctCameraView.CaptureMode == CameraCaptureMode.Photo)
+            capturing = true;
+            //Capture image every 1 second
+            while(capturing == true)
             {
-                captureMode.Text = "Video";
-                xctCameraView.CaptureMode = CameraCaptureMode.Video;
+                xctCameraView.Shutter();
 
-                captureBtn.IsEnabled = false;
-                btnrecordVideo.IsEnabled = true;
-                btnstopVideo.IsEnabled = false;
-            }
-            else
-            {
-                captureMode.Text = "Photo";
-                xctCameraView.CaptureMode = CameraCaptureMode.Photo;
-
-                captureBtn.IsEnabled = true;
-                btnrecordVideo.IsEnabled = false;
-                btnstopVideo.IsEnabled = false;
+                await Task.Delay(1000);
             }
         }
+        //Use this method to operate on the most recent image
         private void MediaCaptured(object sender, MediaCapturedEventArgs e)
         {
-
+            //e.Image is the most recent image
             imgView.Source = e.Image;
             imgViewPanel.IsVisible = true;
+        }
+       
+        private async void StopCapture(object sender, EventArgs e)
+        {
+            capturing = false;
+            imgViewPanel.IsVisible = false;
         }
 
         private void CloseImageView(object sender, EventArgs e)
